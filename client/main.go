@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"syscall"
 
 	"github.com/gorilla/websocket"
@@ -113,7 +114,7 @@ func (t *Tunnel) handleCalls(payload *RxHandleCall, ct *ConfigTunnel) {
 
 	url := fmt.Sprintf("http://localhost:%s%s", strconv.Itoa(ct.Port), payload.Path)
 
-	req, err := http.NewRequest(string(bytes.ToUpper([]byte(payload.Method))), url, bytes.NewReader([]byte(payload.Body)))
+	req, err := http.NewRequest(strings.ToUpper(payload.Method), url, bytes.NewReader([]byte(payload.Body)))
 	for key, value := range payload.Headers {
 		req.Header.Set(key, value)
 	}
