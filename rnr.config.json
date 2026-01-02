@@ -1,0 +1,4 @@
+{
+  "ignorePath": ["server/node_modules", ".git", "package"],
+  "command": "go run ./client"
+}

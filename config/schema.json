@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "tunnel": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer"
+          },
+          "proto": {
+            "type": "string"
+          },
+          "host": {
+            "type": "string"
+          },
+          "secure": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "required": ["name", "port", "host"]
+      }
+    }
+  }
+}

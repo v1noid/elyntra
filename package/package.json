@@ -1,0 +1,28 @@
+{
+  "name": "elyntra",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "author": {
+    "email": "arifmp40@gmail.com",
+    "name": "v1noid",
+    "url": "https://v1noid.com"
+  },
+  "description": "A CLI to initialize server for elyntra",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "bin": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@types/node": "^25.0.3",
+    "ora": "^9.0.0",
+    "tsup": "^8.5.1"
+  },
+  "scripts": {
+    "build": "tsup"
+  }
+}
