@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"main/client/utils"
+	"main/utils"
+
 	"net/http"
 	"os"
 	"os/signal"
@@ -20,6 +21,7 @@ import (
 type Config struct {
 	Tunnel map[string]ConfigTunnel `json:"tunnel"`
 }
+
 type ConfigTunnel struct {
 	Name   string `json:"name"`
 	Port   int    `json:"port"`
@@ -101,7 +103,7 @@ func (t *Tunnel) Listen(ct *ConfigTunnel) {
 				log.Fatal("Error unmarshalling handle call data: ", err.Error())
 			}
 
-			t.handleCalls(data, ct)
+			go t.handleCalls(data, ct)
 
 			log.Printf("Handle call ID received: %s", data.ID)
 		default:
@@ -153,6 +155,7 @@ func (t *Tunnel) handleCalls(payload *RxHandleCall, ct *ConfigTunnel) {
 
 func main() {
 	tunnel := &Tunnel{}
+	fmt.Printf("asda")
 	InitializeConfig(tunnel)
 	connectedConn := make(map[string]bool)
 	tunnel.Conns = make(map[string]*websocket.Conn, 4)

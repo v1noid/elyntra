@@ -37,7 +37,7 @@ export function init(
   } = {
     hostname: process.env.HOST || "0.0.0.0",
     port: +process.env.PORT! || 3000,
-  }
+  },
 ) {
   new Elysia()
     .all("*", async (c) => {
@@ -57,7 +57,10 @@ export function init(
 
         if (conn) {
           conn.raw.send(
-            JSON.stringify({ type: "request:handle", data: { id, ...payload } })
+            JSON.stringify({
+              type: "request:handle",
+              data: { id, ...payload },
+            }),
           );
         }
 
@@ -126,6 +129,6 @@ export function init(
       },
       (server) => {
         console.log(`Server started on ${server.hostname}:${server.port}`);
-      }
+      },
     );
 }
